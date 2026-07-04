@@ -2,9 +2,29 @@ import Image from "next/image";
 
 const NAV = [
   { href: "#produse", label: "Produse" },
+  { href: "#galerie", label: "Galerie" },
   { href: "#despre", label: "Despre" },
   { href: "#evenimente", label: "Evenimente" },
   { href: "#contact", label: "Contact" },
+];
+
+const GALLERY = [
+  {
+    img: "/images/tort-mousse.jpg",
+    caption: "Tort mousse de ciocolată cu zmeură",
+  },
+  {
+    img: "/images/ness-grid.jpg",
+    caption: "Prăjituri cu ness, tăiate pătrat",
+  },
+  {
+    img: "/images/ness-plate.jpg",
+    caption: "Pătrate cu cremă de cafea",
+  },
+  {
+    img: "/images/ness-closeup.jpg",
+    caption: "Felie cu ness și cacao",
+  },
 ];
 
 const PRODUCTS = [
@@ -199,6 +219,40 @@ export default function Home() {
                     </p>
                   </div>
                 </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Galerie */}
+        <section id="galerie" className="scroll-mt-20 bg-fern py-20">
+          <div className="mx-auto w-full max-w-6xl px-6">
+            <p className="text-xs font-medium uppercase tracking-[0.4em] text-peach">
+              din atelier
+            </p>
+            <h2 className="mt-3 text-3xl font-semibold text-blush sm:text-4xl">
+              Galerie
+            </h2>
+            <p className="mt-4 max-w-2xl font-light leading-relaxed text-blush/85">
+              Câteva dintre dulciurile ieșite din atelier — de la tortul de
+              mousse cu zmeură până la pătratele cu cremă de ness.
+            </p>
+            <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+              {GALLERY.map((g) => (
+                <figure key={g.img} className="group">
+                  <div className="relative aspect-square overflow-hidden rounded-3xl shadow-lg">
+                    <Image
+                      src={g.img}
+                      alt={g.caption}
+                      fill
+                      sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
+                      className="object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                  </div>
+                  <figcaption className="mt-3 text-center text-sm font-light text-blush/80">
+                    {g.caption}
+                  </figcaption>
+                </figure>
               ))}
             </div>
           </div>
