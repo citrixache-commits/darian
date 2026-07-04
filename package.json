@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "deploy": "vercel build --prod --yes && CI=1 vercel deploy --prebuilt --prod --yes"
   },
   "dependencies": {
     "next": "16.2.10",
