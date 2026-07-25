@@ -6,7 +6,7 @@
 
 - **Site-ul este deja construit și LIVE:** https://fiorisweets.vercel.app
 - **Repository sursă (public):** https://github.com/citrixache-commits/darian
-- **Domeniu final:** fiorisweets.ro — înregistrat prin Claus Web la 02.07.2026, pe contul lui Bogdan (reînnoirea anuală se verifică în panoul Claus Web; puneți-vă un reminder înainte de 02.07.2027 — dacă expiră, pică și site-ul și emailul)
+- **Domeniu final:** fiorisweets.ro — **înregistrat de voi (Darian) direct la ROTLD**, la 02.07.2026; datele de administrare (parola domeniului) au venit pe emailul folosit la înregistrare. Reînnoirea e responsabilitatea voastră: reminder în calendar înainte de 02.07.2027 — dacă expiră, pică și site-ul și emailul
 - **Administrare domeniu ROTLD:** https://www.rotld.ro/domadmin/
 - **Raport de audit complet:** fișierul `AUDIT.md` din repository (toate îmbunătățirile recomandate, cu fix-uri concrete)
 
@@ -15,7 +15,7 @@ Ce conține site-ul acum: pagină de prezentare cu secțiunile Produse, Galerie 
 ⚠️ **De știut de la început:**
 1. Domeniul fiorisweets.ro **nu funcționează încă** (zona DNS nu există) — se rezolvă la pașii 8–9;
 2. Adresa de pe site, comenzi@fiorisweets.ro, e **placeholder și nu primește mesaje** — se rezolvă la pasul 11;
-3. Pașii 8 și 9 **au nevoie de Bogdan** (domeniul e pe conturile lui Vercel și Claus Web/ROTLD) — anunțați-l când ajungeți acolo, ordinea pașilor e importantă.
+3. La pasul 8 **e nevoie de Bogdan o singură dată** (domeniul e momentan atașat în contul lui Vercel de test și trebuie eliberat de acolo) — anunțați-l când ajungeți la pasul 8; ordinea pașilor 8 → 9 e importantă. Pasul 9 îl faceți singuri, cu parola voastră de la ROTLD.
 
 ---
 
@@ -117,23 +117,23 @@ Verifică:
 
 **Situația actuală (verificată la 25.07.2026):** domeniul fiorisweets.ro este înregistrat corect, dar **zona DNS nu există** — nameserverele actuale (ns.clausweb.ro / ns.registar.ro / ns.romania-webhosting.com) nu răspund pentru acest domeniu. De aceea site-ul nu se poate deschide încă pe fiorisweets.ro și niciun email către @fiorisweets.ro nu ajunge nicăieri.
 
-⚠️ **Acest pas îl face Bogdan** (accesul la panoul ROTLD/Claus Web e pe contul și emailul lui — voi nu aveți parola domeniului). Dați-i mesaj când ați terminat pasul 8.
+✅ **Acest pas îl faceți voi:** domeniul e înregistrat de voi la ROTLD, deci autentificarea la https://www.rotld.ro/domadmin/ se face cu **numele domeniului + parola domeniului**, primite pe emailul vostru la înregistrare. Dacă nu mai găsiți parola, folosiți recuperarea din pagina de login — vine tot pe emailul vostru.
 
-⚠️ **Ordinea e critică:** nameserverele se schimbă **doar DUPĂ** ce domeniul a fost scos din contul lui Bogdan și adăugat cu succes la proiectul vostru (pasul 8). Dacă se schimbă înainte, domeniul rămâne legat de contul lui Bogdan și nu-l mai puteți revendica.
+⚠️ **Ordinea e critică:** nameserverele se schimbă **doar DUPĂ** ce domeniul a fost scos din contul Vercel al lui Bogdan și adăugat cu succes la proiectul vostru (pasul 8). Dacă se schimbă înainte, domeniul rămâne legat de contul lui și nu-l mai puteți revendica.
 
 **Calea recomandată (cea mai simplă):** mutarea pe nameserverele Vercel — apoi Vercel administrează tot automat:
 
-1. Bogdan se autentifică la https://www.rotld.ro/domadmin/ (sau în panoul de client Claus Web) și schimbă nameserverele domeniului în:
+1. Autentificați-vă la https://www.rotld.ro/domadmin/ și schimbați nameserverele domeniului în:
    - `ns1.vercel-dns.com`
    - `ns2.vercel-dns.com`
 2. ROTLD trimite o cheie de confirmare pe emailul de contact al domeniului — trebuie introdusă pentru finalizare;
 3. Se așteaptă propagarea (de la câteva minute la câteva ore). Vercel emite automat certificatul SSL.
 
-**Alternativa** (rămânerea pe nameserverele Claus Web): trebuie creată zona DNS în panoul Claus Web, cu exact valorile afișate de Vercel la pasul 8 — de regulă `A 76.76.21.21` pentru fiorisweets.ro și `CNAME cname.vercel-dns.com` pentru www. Nu folosiți valori aproximative.
+**Alternativa** (doar dacă aveți deja un serviciu de hosting/DNS unde puteți crea zona — nameserverele actuale, ns.clausweb.ro etc., nu servesc azi nimic pentru domeniu): creați zona cu exact valorile afișate de Vercel la pasul 8 — de regulă `A 76.76.21.21` pentru fiorisweets.ro și `CNAME cname.vercel-dns.com` pentru www. Nu folosiți valori aproximative.
 
 ## 10. Configurare cu Computer Use (opțional)
 
-După autentificarea manuală în ROTLD / Claus Web, se poate transmite în Claude:
+După autentificarea manuală în panoul ROTLD, se poate transmite în Claude:
 
 > „Navighează în panoul ROTLD și configurează pentru fiorisweets.ro exact înregistrările DNS afișate în proiectul meu Vercel. Nu modifica alte setări DNS.”
 
@@ -141,7 +141,7 @@ După autentificarea manuală în ROTLD / Claus Web, se poate transmite în Clau
 
 Adresa `comenzi@fiorisweets.ro` care apare pe site este un **placeholder**: căsuța nu există, iar domeniul nu are înregistrări MX, deci orice mesaj trimis acolo se pierde. Două variante:
 
-- **Varianta corectă:** după pasul 9, creați căsuța `comenzi@fiorisweets.ro` (Zoho Mail are plan gratuit; Google Workspace e contra cost). Înregistrările MX cerute de furnizor se adaugă în dashboard-ul Vercel: meniul **Domains** din sidebar (la nivel de cont, NU în proiect) → click pe `fiorisweets.ro` → **DNS Records** (există și „Add DNS Preset” pentru Zoho/Google). Atenție: asta funcționează doar dacă la pasul 9 ați mutat domeniul pe nameserverele Vercel; dacă ați rămas pe Claus Web, MX-urile se adaugă în zona DNS din panoul Claus Web.
+- **Varianta corectă:** după pasul 9, creați căsuța `comenzi@fiorisweets.ro` (Zoho Mail are plan gratuit; Google Workspace e contra cost). Înregistrările MX cerute de furnizor se adaugă în dashboard-ul Vercel: meniul **Domains** din sidebar (la nivel de cont, NU în proiect) → click pe `fiorisweets.ro` → **DNS Records** (există și „Add DNS Preset” pentru Zoho/Google). Atenție: asta funcționează doar dacă la pasul 9 ați mutat domeniul pe nameserverele Vercel; dacă ați ales alt serviciu de DNS, MX-urile se adaugă acolo, în zona DNS respectivă.
 - **Varianta rapidă:** schimbați adresa din site cu una care există deja (Gmail-ul vostru). Se modifică în fișierul `app/page.tsx` (apare de două ori, căutați `comenzi@fiorisweets.ro`) — sau îi cereți lui Claude asta, în chat-ul conectat la repository.
 
 Notă: pentru că azi domeniul nu are deloc zonă DNS, nu există înregistrări MX/SPF/DKIM de păstrat — se pornește de la zero. Dacă pe viitor emailul funcționează, nu ștergeți niciodată acele înregistrări.
