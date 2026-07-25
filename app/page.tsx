@@ -10,6 +10,14 @@ const NAV = [
 
 const GALLERY = [
   {
+    img: "/images/mar-verde.jpg",
+    caption: "„Mărul verde” — mousse cu inimă de mere",
+  },
+  {
+    img: "/images/lava-cake.jpg",
+    caption: "Lava cake cu ciocolată",
+  },
+  {
     img: "/images/tort-mousse.jpg",
     caption: "Tort mousse de ciocolată cu zmeură",
   },
@@ -24,6 +32,24 @@ const GALLERY = [
   {
     img: "/images/ness-closeup.jpg",
     caption: "Felie cu ness și cacao",
+  },
+];
+
+const VIDEOS = [
+  {
+    src: "/videos/mar-verde.mp4",
+    poster: "/images/mar-verde.jpg",
+    caption: "„Mărul verde”, pe dinăuntru",
+  },
+  {
+    src: "/videos/lava-cake.mp4",
+    poster: "/images/lava-cake.jpg",
+    caption: "Lava cake, abia scos din formă",
+  },
+  {
+    src: "/videos/felie-zmeura.mp4",
+    poster: "/images/felie-zmeura.jpg",
+    caption: "Felie cu ciocolată și zmeură",
   },
 ];
 
@@ -234,10 +260,10 @@ export default function Home() {
               Galerie
             </h2>
             <p className="mt-4 max-w-2xl font-light leading-relaxed text-blush/85">
-              Câteva dintre dulciurile ieșite din atelier — de la tortul de
-              mousse cu zmeură până la pătratele cu cremă de ness.
+              Câteva dintre dulciurile ieșite din atelier — de la „mărul
+              verde” cu inimă de mere până la pătratele cu cremă de ness.
             </p>
-            <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
               {GALLERY.map((g) => (
                 <figure key={g.img} className="group">
                   <div className="relative aspect-square overflow-hidden rounded-3xl shadow-lg">
@@ -245,12 +271,38 @@ export default function Home() {
                       src={g.img}
                       alt={g.caption}
                       fill
-                      sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
+                      sizes="(min-width: 1152px) 344px, (min-width: 640px) 50vw, 100vw"
                       className="object-cover transition-transform duration-500 group-hover:scale-105"
                     />
                   </div>
                   <figcaption className="mt-3 text-center text-sm font-light text-blush/80">
                     {g.caption}
+                  </figcaption>
+                </figure>
+              ))}
+            </div>
+
+            <h3 className="mt-16 text-xl font-semibold text-blush">
+              Din atelier, pe viu
+            </h3>
+            <p className="mt-2 max-w-2xl text-sm font-light leading-relaxed text-blush/85">
+              Filmări scurte cu dulciurile noastre, exact așa cum ies din
+              atelier — apasă play.
+            </p>
+            <div className="mt-8 grid gap-6 sm:grid-cols-3">
+              {VIDEOS.map((v) => (
+                <figure key={v.src}>
+                  <video
+                    controls
+                    playsInline
+                    preload="none"
+                    poster={v.poster}
+                    className="aspect-[9/16] w-full rounded-3xl bg-fern-deep object-cover shadow-lg"
+                  >
+                    <source src={v.src} type="video/mp4" />
+                  </video>
+                  <figcaption className="mt-3 text-center text-sm font-light text-blush/80">
+                    {v.caption}
                   </figcaption>
                 </figure>
               ))}
@@ -263,8 +315,8 @@ export default function Home() {
           <div className="mx-auto grid w-full max-w-6xl items-center gap-12 px-6 lg:grid-cols-2">
             <div className="relative aspect-square overflow-hidden rounded-3xl shadow-lg">
               <Image
-                src="/images/ingredients.jpg"
-                alt="Ingrediente pentru copt: cacao, ciocolată, ouă și făină"
+                src="/images/atelier-darian.jpg"
+                alt="Cofetarul decorând un tort cu cremă verde mentă, în atelier"
                 fill
                 sizes="(min-width: 1024px) 50vw, 100vw"
                 className="object-cover"
